@@ -32,3 +32,12 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+def props = new Properties()
+file("local.properties").withInputStream { props.load(it) }
+
+task printProps {
+    doFirst {
+        println props.getProperty("testString")
+    }
+}
